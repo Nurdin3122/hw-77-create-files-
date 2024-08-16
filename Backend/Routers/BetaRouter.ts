@@ -1,7 +1,11 @@
 import express from "express";
-const BetaRouter = express.Router();
+const Messages = express.Router();
 
-BetaRouter.get("/",async  (req,res) => {
+Messages.get("/",async  (req,res) => {
    res.send("Hello, world!!!")
 });
-export default BetaRouter
+
+Messages.post("/",async  (req,res) => {
+   res.send("Hello, world!!!")
+});
+export default Messages
