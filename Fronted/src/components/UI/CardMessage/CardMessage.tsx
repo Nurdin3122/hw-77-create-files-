@@ -1,5 +1,4 @@
 import React from 'react';
-import noPhoto from "../../../assets/images/noPhoto.png"
 import {Card,CardContent, CardHeader, CardMedia, Grid, styled} from "@mui/material";
 import {apiURL} from "../../../constants.ts";
 
@@ -11,7 +10,7 @@ interface Props {
 }
 
 const CardMessage:React.FC<Props> = ({id,author,message,image}) => {
-    let cardImage = noPhoto;
+    let cardImage = "";
     if (image) {
         cardImage = apiURL + '/' + "images" + "/" + image;
     }
@@ -31,7 +30,7 @@ const CardMessage:React.FC<Props> = ({id,author,message,image}) => {
                         {message}
                     </strong>
                 </CardContent>
-                <ImageCardMedia image={cardImage} title={id}/>
+                {image && <ImageCardMedia image={cardImage} title={id} />}
             </Card>
         </Grid>
     )

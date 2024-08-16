@@ -3,7 +3,7 @@ import FormMessage from "./components/UI/Form/FormMessage.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchMessages} from "./components/UI/Form/FormMessageThunk.ts";
-import {loadingState, messagesArray} from "./components/UI/Form/FormMessageSlice.ts";
+import {loadingState} from "./components/UI/Form/FormMessageSlice.ts";
 import CardMessage from "./components/UI/CardMessage/CardMessage.tsx";
 import {AppDispatch} from "./Redux/store.ts";
 
