@@ -1,12 +1,12 @@
 export interface MessageT {
-    id:number
+    id:string
     author:"Anonymous"|string;
     message:string;
-    img:File | null
+    image: string | null;
 }
 
 export interface MessageTWithoutId {
     author:"Anonymous" | string;
     message:string;
-    img:File | null
+    image: string | null;
 }

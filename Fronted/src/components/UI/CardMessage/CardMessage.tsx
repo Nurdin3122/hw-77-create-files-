@@ -1,10 +1,39 @@
 import React from 'react';
+import noPhoto from "../../../assets/images/noPhoto.png"
+import {Card,CardContent, CardHeader, CardMedia, Grid, styled} from "@mui/material";
+import {apiURL} from "../../../constants.ts";
 
-const CardMessage = () => {
+interface Props {
+    id: string;
+    author: string;
+    message:"Anonymous" | string;
+    image: string | null;
+}
+
+const CardMessage:React.FC<Props> = ({id,author,message,image}) => {
+    let cardImage = noPhoto;
+    if (image) {
+        cardImage = apiURL + '/' + "images" + "/" + image;
+    }
+
+    const ImageCardMedia = styled(CardMedia)({
+        height: 0,
+        paddingTop: '56.25%',
+    });
+
+
     return (
-        <div>
-            <h3>here will be blocks of cards</h3>
-        </div>
+        <Grid item xs={12} sm={12} md={6} lg={4}  sx={{ marginTop: 2, marginBottom: 2 }}>
+            <Card sx={{height: '100%'}}>
+                <CardHeader title={author}/>
+                <CardContent>
+                    <strong>
+                        {message}
+                    </strong>
+                </CardContent>
+                <ImageCardMedia image={cardImage} title={id}/>
+            </Card>
+        </Grid>
     )
 }
 

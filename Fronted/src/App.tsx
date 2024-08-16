@@ -5,10 +5,12 @@ import {useEffect} from "react";
 import {fetchMessages} from "./components/UI/Form/FormMessageThunk.ts";
 import {loadingState, messagesArray} from "./components/UI/Form/FormMessageSlice.ts";
 import CardMessage from "./components/UI/CardMessage/CardMessage.tsx";
+import {AppDispatch} from "./Redux/store.ts";
 
 const App = () => {
-    const dispatch = useDispatch();
-    const messages = useSelector(messagesArray);
+    const dispatch:AppDispatch = useDispatch();
+    const messages = useSelector(state => state.messages.messages);
+    console.log(messages)
     const loading = useSelector(loadingState);
 
 
@@ -22,7 +24,16 @@ const App = () => {
      <header><h1>гостевая книга</h1></header>
         <main>
             <FormMessage/>
-            {loading ? <h1>Загрузка</h1> : <CardMessage/>}
+            {loading ? <h1>Загрузка</h1> :(
+                messages.map(mess => (
+                    <CardMessage
+                        key={mess.id}
+                        id={mess.id}
+                        author={mess.author}
+                        message={mess.message}
+                        image={mess.image}
+                    />
+                )))}
         </main>
     </>
   )
